@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endless Spam</title>
+</head>
+<body>
+    <button id="spamButton">Spam Forever!</button>
+    <div id="spamOutput"></div>
+
+    <script>
+        let counter = 0;
+
+        document.getElementById('spamButton').addEventListener('click', function() {
+            counter++; // Increment the counter
+            let message = `Spam message number: ${counter}`;
+
+            // Create and display the spam message
+            let spamElement = document.createElement('p');
+            spamElement.textContent = message;
+            document.getElementById('spamOutput').appendChild(spamElement);
+
+            // Continue spamming indefinitely
+            function spamIndefinitely() {
+                let infiniteSpamElement = document.createElement('p');
+                infiniteSpamElement.textContent = message;
+                document.getElementById('spamOutput').appendChild(infiniteSpamElement);
+
+                // Repeat after a short delay
+                setTimeout(spamIndefinitely, 100); // Adjust the delay as needed (100 ms here)
+            }
+
+            // Start the endless spamming
+            spamIndefinitely();
+        });
+    </script>
+</body>
+</html>
